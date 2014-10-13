@@ -5,8 +5,10 @@
 
         Can Elmas - can.elmas@monitise.com
                     canelm@gmail.com
-
-		1.0.0 - 13.10.2014
+					
+		1.0.1
+			-more violation checks
+		1.0.0 
 			-initial draft
 -->
 <module name="Checker">
@@ -30,21 +32,21 @@
         <!--
             Java Doc Checks
         -->
-         <module name="JavadocMethod">
-             <property name="severity" value="info" />
-             <property name="logLoadErrors" value="true" />
-             <property name="suppressLoadErrors" value="true" />
-         </module>
-         <module name="JavadocType">
-             <property name="severity" value="info" />
-         </module>
-         <module name="JavadocVariable">
-             <property name="severity" value="info" />
-             <property name="excludeScope" value="private" />
-         </module>
-         <module name="JavadocStyle">
-             <property name="severity" value="info" />
-         </module>
+        <module name="JavadocMethod">
+            <property name="severity" value="ignore" />
+            <property name="logLoadErrors" value="true" />
+            <property name="suppressLoadErrors" value="true" />
+        </module>
+        <module name="JavadocType">
+            <property name="severity" value="ignore" />
+        </module>
+        <module name="JavadocVariable">
+            <property name="severity" value="ignore" />
+            <property name="excludeScope" value="private" />
+        </module>
+        <module name="JavadocStyle">
+            <property name="severity" value="ignore" />
+        </module>
 
 
         <!--
@@ -83,6 +85,7 @@
         -->
         <module name="LineLength">
             <property name="max" value="120" />
+            <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
         </module>
 
         <module name="MethodLength" />
@@ -118,8 +121,12 @@
             Modifiers Violations
             http://checkstyle.sourceforge.net/config_modifier.html
         -->
-        <!--<module name="ModifierOrder"/>-->
-        <module name="RedundantModifier" />
+        <module name="ModifierOrder">
+            <property name="severity" value="info"/>
+        </module>
+        <module name="RedundantModifier">
+            <property name="severity" value="warning" />
+        </module>
 
 
         <!--
@@ -131,11 +138,16 @@
         <module name="MethodParamPad" />
         <module name="NoWhitespaceAfter" />
         <module name="NoWhitespaceBefore" />
-        <module name="OperatorWrap" />
+        <module name="OperatorWrap">
+            <property name="option" value="NL"/>
+        </module>
         <module name="ParenPad" />
         <module name="TypecastParenPad" />
         <module name="WhitespaceAfter" />
-        <module name="WhitespaceAround" />
+        <module name="WhitespaceAround">
+            <property name="allowEmptyConstructors" value="true"/>
+            <property name="allowEmptyMethods" value="true"/>
+        </module>
 
         <!--
             Block Violations
@@ -145,9 +157,9 @@
         <module name="AvoidNestedBlocks" />
         <module name="LeftCurly" />
         <module name="RightCurly" />
-        <module name="NeedBraces" />    
+        <module name="NeedBraces" />
 
-        <module name="UpperEll" />    
+        <module name="UpperEll" />
 
 
 
@@ -172,13 +184,7 @@
             <property name="severity" value="ignore" />
             <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit" />
         </module>
-        <module name="NoWhitespaceBefore">
-            <property name="severity" value="warning" />
-            <property name="allowLineBreaks" value="true" />
-            <property name="tokens" value="SEMI,DOT" />
-            <metadata name="com.atlassw.tools.eclipse.checkstyle.comment"
-                value="Semicolon and Dot operator" />
-        </module>
+        
         <module name="PackageHtml">
             <property name="severity" value="ignore" />
             <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity"
