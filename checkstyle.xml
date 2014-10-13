@@ -5,10 +5,12 @@
 
         Can Elmas - can.elmas@monitise.com
                     canelm@gmail.com
-					
-		1.0.1
+
+        1.0.0.2
+            copyright info check included
+		1.0.0.1
 			-more violation checks
-		1.0.0 
+		1.0.0
 			-initial draft
 -->
 <module name="Checker">
@@ -17,10 +19,17 @@
 
     <module name="NewlineAtEndOfFile" />
 
+    <module name="Header">
+        <property name="header" value="/*\n * Copyright 2003-2014 cnl.ms Limited. All Rights Reserved.\n *\n * Save to the extent permitted by law, you may not use, copy, modify,\n * distribute or create derivative works of this material or any part\n * of it without the prior written consent of cnl.ms Limited.\n * Any reproduction of this material must contain this notice.\n */" />
+        <property name="fileExtensions" value="java, xml" />
+    </module>
+
     <!--
         Duplication Check
     -->
-    <module name="StrictDuplicateCode" />
+    <module name="StrictDuplicateCode">
+        <property name="min" value="15" />
+    </module>
 
     <!--
         Tree Walker starts here
@@ -184,7 +193,7 @@
             <property name="severity" value="ignore" />
             <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit" />
         </module>
-        
+
         <module name="PackageHtml">
             <property name="severity" value="ignore" />
             <metadata name="com.atlassw.tools.eclipse.checkstyle.lastEnabledSeverity"
